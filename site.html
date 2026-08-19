@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="ur">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CSS Complete Guide - Roman Urdu</title>
+<style>
+  /* ==================== GLOBAL RESET ==================== */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    line-height: 1.6;
+    background: #f4f6f8;
+    color: #222;
+  }
+
+  header.main-header {
+    background: linear-gradient(135deg, #4b6cb7, #182848);
+    color: white;
+    text-align: center;
+    padding: 40px 20px;
+  }
+
+  header.main-header h1 {
+    font-size: 2.2rem;
+    margin-bottom: 10px;
+  }
+
+  nav.toc {
+    background: white;
+    max-width: 900px;
+    margin: -20px auto 0 auto;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    position: relative;
+  }
+
+  nav.toc ul {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 8px;
+  }
+
+  nav.toc a {
+    text-decoration: none;
+    color: #182848;
+    font-weight: 600;
+    font-size: 0.95rem;
+  }
+
+  nav.toc a:hover {
+    text-decoration: underline;
+    color: #4b6cb7;
+  }
+
+  .topic {
+    max-width: 900px;
+    margin: 30px auto;
+    background: white;
+    padding: 25px 30px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  }
+
+  .topic h2 {
+    color: #182848;
+    border-bottom: 3px solid #4b6cb7;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+  }
+
+  .topic h2 span.num {
+    background: #4b6cb7;
+    color: white;
+    padding: 3px 12px;
+    border-radius: 50%;
+    margin-right: 10px;
+    font-size: 0.9rem;
+  }
+
+  .explain {
+    background: #eef4ff;
+    border-left: 4px solid #4b6cb7;
+    padding: 12px 15px;
+    margin-bottom: 15px;
+    border-radius: 4px;
+  }
+
+  .demo-box {
+    border: 2px dashed #aaa;
+    padding: 15px;
+    border-radius: 8px;
+    margin: 15px 0;
+    background: #fafafa;
+  }
+
+  pre {
+    background: #1e1e2e;
+    color: #f8f8f2;
+    padding: 15px;
+    border-radius: 8px;
+    overflow-x: auto;
+    font-size: 0.85rem;
+    margin: 10px 0;
+  }
+
+  code {
+    font-family: 'Courier New', monospace;
+  }
+
+  footer {
+    text-align: center;
+    padding: 30px;
+    color: #666;
+  }
+
+  /* ==================== TOPIC 3: BOX MODEL DEMO ==================== */
+  .box-model-demo {
+    width: 200px;
+    padding: 20px;
+    border: 8px solid #4b6cb7;
+    margin: 20px;
+    background: #cce0ff;
+    text-align: center;
+  }
+
+  /* ==================== TOPIC 4: COLORS/BACKGROUND DEMO ==================== */
+  .bg-demo {
+    height: 100px;
+    background-color: #ff6b6b;
+    background-image: linear-gradient(45deg, rgba(255,255,255,0.3), transparent);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+  }
+
+  /* ==================== TOPIC 5: TYPOGRAPHY DEMO ==================== */
+  .typo-demo h3 {
+    font-family: Georgia, serif;
+    font-size: 1.8rem;
+    letter-spacing: 1px;
+  }
+  .typo-demo p {
+    text-transform: uppercase;
+    text-decoration: underline;
+    color: #4b6cb7;
+  }
+
+  /* ==================== TOPIC 6: DISPLAY DEMO ==================== */
+  .display-demo span {
+    background: #4b6cb7;
+    color: white;
+    padding: 5px 10px;
+    margin: 3px;
+  }
+  .d-block { display: block; width: 150px; }
+  .d-inline { display: inline; }
+  .d-inline-block { display: inline-block; width: 100px; }
+
+  /* ==================== TOPIC 7: POSITIONING DEMO ==================== */
+  .position-demo {
+    position: relative;
+    height: 150px;
+    background: #e0e0e0;
+    border-radius: 8px;
+  }
+  .pos-absolute {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #ff6b6b;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 5px;
+  }
+
+  /* ==================== TOPIC 8: FLEXBOX DEMO ==================== */
+  .flex-demo {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background: #dfe9ff;
+    padding: 15px;
+    border-radius: 8px;
+    gap: 10px;
+  }
+  .flex-demo div {
+    background: #4b6cb7;
+    color: white;
+    padding: 20px;
+    border-radius: 6px;
+    text-align: center;
+    flex: 1;
+  }
+
+  /* ==================== TOPIC 9: GRID DEMO ==================== */
+  .grid-demo {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+  }
+  .grid-demo div {
+    background: #182848;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    border-radius: 6px;
+  }
+  .grid-demo .span2 {
+    grid-column: span 2;
+    background: #4b6cb7;
+  }
+
+  /* ==================== TOPIC 10: RESPONSIVE DEMO ==================== */
+  .responsive-demo {
+    background: #4b6cb7;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    border-radius: 8px;
+  }
+  @media (max-width: 600px) {
+    .responsive-demo {
+      background: #ff6b6b;
+    }
+    .responsive-demo::after {
+      content: " (Mobile View - Screen chota hai)";
+    }
+  }
+  @media (min-width: 601px) {
+    .responsive-demo::after {
+      content: " (Desktop View - Screen bara hai)";
+    }
+  }
+
+  /* ==================== TOPIC 11: TRANSITIONS/ANIMATION DEMO ==================== */
+  .transition-demo {
+    width: 100px;
+    height: 100px;
+    background: #4b6cb7;
+    border-radius: 8px;
+    transition: all 0.4s ease-in-out;
+    margin: 15px auto;
+  }
+  .transition-demo:hover {
+    background: #ff6b6b;
+    transform: scale(1.3) rotate(10deg);
+    border-radius: 50%;
+  }
+
+  @keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+  }
+  .animate-demo {
+    width: 60px;
+    height: 60px;
+    background: #ff6b6b;
+    border-radius: 50%;
+    animation: bounce 1s infinite ease-in-out;
+    margin: 15px auto;
+  }
+
+  /* ==================== TOPIC 12: VARIABLES/SHADOW DEMO ==================== */
+  :root {
+    --main-theme-color: #4b6cb7;
+    --shadow-demo-color: rgba(0,0,0,0.3);
+  }
+  .var-demo {
+    background: var(--main-theme-color);
+    color: white;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 6px 15px var(--shadow-demo-color);
+    text-align: center;
+  }
+
+</style>
+</head>
+<body>
+
+<header class="main-header">
+  <h1>🎨 CSS Complete Guide</h1>
+  <p>Har topic simple Roman Urdu explanation + live code ke sath</p>
+</header>
+
+<nav class="toc">
+  <ul>
+    <li><a href="#t1">1. Basics</a></li>
+    <li><a href="#t2">2. Selectors</a></li>
+    <li><a href="#t3">3. Box Model</a></li>
+    <li><a href="#t4">4. Colors/Background</a></li>
+    <li><a href="#t5">5. Typography</a></li>
+    <li><a href="#t6">6. Display</a></li>
+    <li><a href="#t7">7. Positioning</a></li>
+    <li><a href="#t8">8. Flexbox</a></li>
+    <li><a href="#t9">9. Grid</a></li>
+    <li><a href="#t10">10. Responsive</a></li>
+    <li><a href="#t11">11. Transitions/Animations</a></li>
+    <li><a href="#t12">12. Variables/Shadows</a></li>
+  </ul>
+</nav>
+
+<!-- ==================== TOPIC 1 ==================== -->
+<section class="topic" id="t1">
+  <h2><span class="num">1</span>CSS Basics</h2>
+  <div class="explain">
+    CSS teen tarike se lagai ja sakti hai: <b>Inline</b> (tag ke andar style="..."), 
+    <b>Internal</b> (head mein &lt;style&gt; tag), aur <b>External</b> (alag .css file link karna). 
+    External sab se best hai kyun ke code clean rehta hai.
+  </div>
+  <pre><code>&lt;!-- 1. Inline CSS --&gt;
+&lt;p style="color: blue;"&gt;Ye inline hai&lt;/p&gt;
+
+&lt;!-- 2. Internal CSS --&gt;
+&lt;head&gt;
+  &lt;style&gt;
+    p { color: green; }
+  &lt;/style&gt;
+&lt;/head&gt;
+
+&lt;!-- 3. External CSS --&gt;
+&lt;head&gt;
+  &lt;link rel="stylesheet" href="style.css"&gt;
+&lt;/head&gt;</code></pre>
+</section>
+
+<!-- ==================== TOPIC 2 ==================== -->
+<section class="topic" id="t2">
+  <h2><span class="num">2</span>Selectors</h2>
+  <div class="explain">
+    Selector batata hai ke CSS kis element pe lagni hai. <b>Class</b> ke liye dot (.) 
+    aur <b>ID</b> ke liye hash (#) use hota hai. Pseudo-class jaise <code>:hover</code> 
+    use hota hai jab mouse element pe jaye.
+  </div>
+  <pre><code>/* Element selector */
+p { color: black; }
+
+/* Class selector */
+.highlight { background: yellow; }
+
+/* ID selector */
+#header { font-size: 24px; }
+
+/* Pseudo-class */
+button:hover { background: red; }
+
+/* Child combinator */
+div > p { margin: 0; }
+
+/* nth-child */
+li:nth-child(2) { color: blue; }</code></pre>
+</section>
+
+<!-- ==================== TOPIC 3 ==================== -->
+<section class="topic" id="t3">
+  <h2><span class="num">3</span>Box Model</h2>
+  <div class="explain">
+    Har HTML element ek box hota hai jisme 4 layers hoti hain: <b>Content → Padding → Border → Margin</b>. 
+    <code>box-sizing: border-box</code> lagane se width/height mein padding aur border khud shamil ho jate hain, 
+    calculation asaan ho jati hai.
+  </div>
+  <div class="demo-box">
+    <div class="box-model-demo">Content</div>
+  </div>
+  <pre><code>* {
+  box-sizing: border-box; /* IMPORTANT - hamesha lagayen */
+}
+
+.box {
+  width: 200px;
+  padding: 20px;      /* content ke around space */
+  border: 8px solid blue;
+  margin: 20px;        /* box ke bahar space */
+  background: lightblue;
+}</code></pre>
+</section>
+
+<!-- ==================== TOPIC 4 ==================== -->
+<section class="topic" id="t4">
+  <h2><span class="num">4</span>Colors & Backgrounds</h2>
+  <div class="explain">
+    Colors ko hex (<code>#ff0000</code>), rgb, ya rgba (transparency ke sath) mein likh sakte hain. 
+    Background image, gradient, position sab control ho sakta hai.
+  </div>
+  <div class="demo-box">
+    <div class="bg-demo">Gradient Background</div>
+  </div>
+  <pre><code>.box {
+  background-color: #ff6b6b;
+  background-image: linear-gradient(45deg, white, transparent);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* rgba - a = alpha (transparency 0 se 1) */
+.transparent-box {
+  background-color: rgba(255, 0, 0, 0.5);
+}</code></pre>
+</section>
+
+<!-- ==================== TOPIC 5 ==================== -->
+<section class="topic" id="t5">
+  <h2><span class="num">5</span>Typography</h2>
+  <div class="explain">
+    Text ki styling: font family, size, weight (bold/normal), line-height (lines ke darmiyan gap), 
+    aur text-align/decoration.
+  </div>
+  <div class="demo-box typo-demo">
+    <h3>Heading Example</h3>
+    <p>Ye paragraph uppercase aur underline hai</p>
+  </div>
+  <pre><code>h3 {
+  font-family: Georgia, serif;
+  font-size: 1.8rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+p {
+  line-height: 1.6;
+  text-align: center;
+  text-transform: uppercase;
+  text-decoration: underline;
+  color: #4b6cb7;
+}</code></pre>
+</section>
+
+<!-- ==================== TOPIC 6 ==================== -->
+<section class="topic" id="t6">
+  <h2><span class="num">6</span>Display Property</h2>
+  <div class="explain">
+    <b>block</b> = pori line leta hai (div, p). <b>inline</b> = sirf jitni jagah chahiye 
+    utni leta hai, width/height set nahi hoti (span, a). <b>inline-block</b> = dono ka mix, 
+    inline rehta hai lekin width/height set kar sakte hain.
+  </div>
+  <div class="demo-box display-demo">
+    <span class="d-block">Block</span>
+    <span class="d-inline">Inline</span>
+    <span class="d-inline-block">Inline-Block</span>
+  </div>
+  <pre><code>.block { display: block; width: 150px; }
+.inline { display: inline; }         /* width kaam nahi karti */
+.inline-block { display: inline-block; width: 100px; }
+.hidden { display: none; }            /* element gayab, space bhi nahi leta */
+.invisible { visibility: hidden; }    /* gayab lekin space rehta hai */</code></pre>
+</section>
+
+<!-- ==================== TOPIC 7 ==================== -->
+<section class="topic" id="t7">
+  <h2><span class="num">7</span>Positioning</h2>
+  <div class="explain">
+    <b>static</b> = default. <b>relative</b> = apni original jagah se hat sakta hai. 
+    <b>absolute</b> = parent (jo relative ho) ke andar kahin bhi rakh sakte hain. 
+    <b>fixed</b> = screen pe hamesha same jagah rehta hai (scroll pe bhi). 
+    <b>sticky</b> = scroll tak normal, phir chipak jata hai.
+  </div>
+  <div class="demo-box">
+    <div class="position-demo">
+      <div class="pos-absolute">Absolute Box</div>
+      Parent (position: relative)
+    </div>
+  </div>
+  <pre><code>.parent {
+  position: relative; /* zaroori hai taake child isi ke andar position ho */
+}
+
+.child {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 100; /* upar dikhane ke liye */
+}</code></pre>
+</section>
+
+<!-- ==================== TOPIC 8 ==================== -->
+<section class="topic" id="t8">
+  <h2><span class="num">8</span>Flexbox (Sab se Zaroori Topic)</h2>
+  <div class="explain">
+    Flexbox items ko ek row ya column mein arrange karta hai. 
+    <code>justify-content</code> horizontal alignment control karta hai, 
+    <code>align-items</code> vertical alignment. Ye modern layouts ke liye must hai.
+  </div>
+  <div class="demo-box">
+    <div class="flex-demo">
+      <div>Box 1</div>
+      <div>Box 2</div>
+      <div>Box 3</div>
+    </div>
+  </div>
+  <pre><code>.container {
+  display: flex;
+  justify-content: space-around; /* horizontal spacing */
+  align-items: center;            /* vertical alignment */
+  flex-direction: row;            /* row ya column */
+  flex-wrap: wrap;                /* chote screen pe wrap ho */
+  gap: 10px;                      /* items ke darmiyan gap */
+}
+
+.item {
+  flex: 1; /* barabar space le */
+}</code></pre>
+</section>
+
+<!-- ==================== TOPIC 9 ==================== -->
+<section class="topic" id="t9">
+  <h2><span class="num">9</span>CSS Grid</h2>
+  <div class="explain">
+    Grid rows aur columns dono ek sath control karta hai. 2D layouts (jaise pura page layout) 
+    ke liye Grid best hai, jabke Flexbox 1D (row ya column) ke liye better hai.
+  </div>
+  <div class="demo-box">
+    <div class="grid-demo">
+      <div class="span2">Span 2 Columns</div>
+      <div>Box</div>
+      <div>Box</div>
+      <div>Box</div>
+      <div>Box</div>
+    </div>
+  </div>
+  <pre><code>.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr; /* 3 equal columns */
+  grid-template-rows: auto;
+  gap: 10px;
+}
+
+.item-wide {
+  grid-column: span 2; /* 2 columns cover kare */
+}</code></pre>
+</section>
+
+<!-- ==================== TOPIC 10 ==================== -->
+<section class="topic" id="t10">
+  <h2><span class="num">10</span>Responsive Design</h2>
+  <div class="explain">
+    Media queries se aap screen size ke hisab se alag CSS de sakte hain. 
+    <b>Mobile-first</b> approach mein pehle mobile ke liye CSS likhte hain, 
+    phir bare screens ke liye media query add karte hain.
+    Neeche wala box screen ka size change karne pe rang badalta hai.
+  </div>
+  <div class="demo-box">
+    <div class="responsive-demo">Browser window resize karke dekhein</div>
+  </div>
+  <pre><code>/* Mobile-first: default chote screen ke liye */
+.box {
+  width: 100%;
+  font-size: 14px;
+}
+
+/* Tablet aur bare screens ke liye */
+@media (min-width: 601px) {
+  .box {
+    width: 50%;
+    font-size: 18px;
+  }
+}
+
+/* Units: rem (root se relative), em (parent se relative),
+   vw/vh (viewport width/height ka %) */
+.text {
+  font-size: 2rem;
+  width: 50vw;
+}</code></pre>
+</section>
+
+<!-- ==================== TOPIC 11 ==================== -->
+<section class="topic" id="t11">
+  <h2><span class="num">11</span>Transitions & Animations</h2>
+  <div class="explain">
+    <b>Transition</b> smooth change deta hai jab koi property badle (jaise hover pe). 
+    <b>Animation with @keyframes</b> automatic, repeating animation banata hai bina kisi trigger ke.
+  </div>
+  <div class="demo-box" style="text-align:center;">
+    <p>Hover karein 👇</p>
+    <div class="transition-demo"></div>
+    <p>Auto animation 👇</p>
+    <div class="animate-demo"></div>
+  </div>
+  <pre><code>/* Transition - hover pe smooth change */
+.box {
+  background: blue;
+  transition: all 0.4s ease-in-out;
+}
+.box:hover {
+  background: red;
+  transform: scale(1.3) rotate(10deg);
+}
+
+/* Animation - automatic loop */
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+.ball {
+  animation: bounce 1s infinite ease-in-out;
+}</code></pre>
+</section>
+
+<!-- ==================== TOPIC 12 ==================== -->
+<section class="topic" id="t12">
+  <h2><span class="num">12</span>CSS Variables & Shadows</h2>
+  <div class="explain">
+    CSS Variables (<code>--name</code>) se aap ek color/value ek jagah define karke 
+    pure project mein reuse kar sakte hain — change karna easy ho jata hai. 
+    Shadows se depth aur professional look milta hai.
+  </div>
+  <div class="demo-box">
+    <div class="var-demo">Yeh box CSS Variables aur Shadow use karta hai</div>
+  </div>
+  <pre><code>:root {
+  --main-color: #4b6cb7;
+  --shadow-color: rgba(0,0,0,0.3);
+}
+
+.box {
+  background: var(--main-color);
+  box-shadow: 0 6px 15px var(--shadow-color);
+}
+
+.text-shadow-demo {
+  text-shadow: 2px 2px 4px gray;
+}
+
+.scroll-box {
+  overflow: auto; /* scroll: hidden, scroll, auto */
+}</code></pre>
+</section>
+
+<footer>
+  <p>✅ Ye sare 12 topics cover karne ke baad aap CSS mein confident ho jayenge!</p>
+  <p>Practice sequence: Basics → Box Model → Display → Positioning → Flexbox → Grid → Responsive → Animations</p>
+</footer>
+
+</body>
+</html>

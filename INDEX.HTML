@@ -1,211 +1,400 @@
 <!DOCTYPE html>
-<!-- Level 1: Bunyadi (Doctype) html topic-->
 <html lang="ur">
 <head>
-    <!-- Level 3: Meta Tags (SEO aur Mobile ke liye lazim) -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Yeh ek demo website hai HTML ke sab important topics seekhne ke liye.">
-    <title>HTML Complete Demo - Sab Topics</title>
-    
-    <!-- Thora sa CSS sirf formatting clear karne ke liye (Focus HTML par hai) -->
+    <title>CSS Complete Demo - 15 Topics</title>
+
+    <!-- ============================================== -->
+    <!-- 🔥 LEVEL 1: CSS KI JAAN (Selectors + Box Model) -->
+    <!-- ============================================== -->
     <style>
-        body { font-family: Arial, sans-serif; margin: 20px; background: #f4f4f4; }
-        .box { background: white; padding: 20px; margin-bottom: 25px; border-radius: 8px; border-left: 5px solid #007bff; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-        .inline-demo { background: yellow; } 
-        .block-demo { background: lightblue; padding: 10px; margin: 5px 0; }
-        table { border-collapse: collapse; width: 100%; }
-        th, td { border: 1px solid black; padding: 8px; text-align: left; }
-        nav a { margin-right: 15px; }
+        /* ---------- Topic 1: Universal Selector (*) ---------- */
+        /* Har element par border-box apply kar deta hai (Width/Height calculation aasan) */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* ---------- Topic 1: Tag Selector (Body) ---------- */
+        body {
+            background-color: #f0f2f5;
+            padding: 70px 20px 20px 20px; 
+            /* Top padding 70px isliye kyunki fixed navbar neeche aa raha hai */
+        }
+
+        /* ---------- Topic 1: Class Selector (.box) ---------- */
+        /* Har box section ko styling */
+        .box {
+            background: white;
+            padding: 25px;
+            margin-bottom: 30px; /* Margin: Bahar ki space */
+            border-radius: 10px; /* Topic 3: Border-radius */
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Topic 3: Box-shadow */
+            border-left: 5px solid #007bff; /* Border: Sirf left side */
+            transition: transform 0.2s ease; /* Topic 3: Transition */
+        }
+
+        /* ---------- Topic 1: Class Selector + Hover (Interaction) ---------- */
+        .box:hover {
+            transform: scale(1.01); /* Topic 3: Thora sa zoom effect hover par */
+            border-left-color: #ff5722;
+        }
+
+        /* ---------- Topic 1: Box Model Demo (Block level) ---------- */
+        .box-model-demo {
+            background-color: #e3f2fd;
+            padding: 20px;      /* Andar ki space (Content se Border tak) */
+            border: 4px solid #1565c0; /* Border (Kinara) */
+            margin: 15px 0;     /* Bahar ki space (Dusre elements se doori) */
+            width: 80%;
+        }
+
+        /* ---------- Topic 1: Display Property (Block vs Inline) ---------- */
+        .block-demo {
+            background: #ffcdd2;
+            padding: 10px;
+            margin: 5px 0;
+            display: block; /* Default hai, poori width leta hai */
+        }
+
+        .inline-demo {
+            background: #c8e6c9;
+            padding: 5px 10px;
+            margin: 5px;
+            display: inline; /* Sirf text ki had tak jagah leta hai */
+        }
+
+        .inline-block-demo {
+            background: #b3e5fc;
+            padding: 10px 20px;
+            margin: 5px;
+            display: inline-block; /* Inline bhi, lekin width/height de sakte hain */
+            width: 150px;
+            text-align: center;
+        }
+
+        .display-none-demo {
+            display: none; /* Element ghayab (JavaScript ke saath kaam aata hai) */
+        }
+
+
+        /* ============================================== */
+        /* 🔥 LEVEL 2: LAYOUT (FLEXBOX + GRID)           */
+        /* ============================================== */
+
+        /* ---------- Topic 2: Flexbox (1D Layout) ---------- */
+        .flex-container {
+            display: flex; /* Flexbox activate */
+            flex-direction: row; /* Row mein arrange karein (Default) */
+            justify-content: space-evenly; /* Horizontal center/space dena */
+            align-items: center; /* Vertical center */
+            flex-wrap: wrap; /* Agar chhota screen ho toh neeche aa jayein */
+            gap: 15px; /* Items ke darmiyaan faasla */
+            background: #e8eaf6;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .flex-item {
+            background: #3f51b5;
+            color: white;
+            padding: 20px 40px;
+            border-radius: 8px;
+            font-weight: bold;
+        }
+
+        /* ---------- Topic 2: CSS Grid (2D Layout) ---------- */
+        .grid-container {
+            display: grid;
+            /* 3 columns banayein, 1fr = baki bachi jagah le lein */
+            grid-template-columns: repeat(3, 1fr); 
+            gap: 20px; /* Rows aur columns ke darmiyaan faasla */
+            background: #fff3e0;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .grid-item {
+            background: #ff9800;
+            color: white;
+            padding: 30px 10px;
+            text-align: center;
+            border-radius: 8px;
+            font-weight: bold;
+        }
+
+
+        /* ============================================== */
+        /* 🔥 LEVEL 3: STYLING (Typography, Colors, Hover) */
+        /* ============================================== */
+
+        /* ---------- Topic 3: Typography (Fonts) ---------- */
+        .typography-demo h1 {
+            font-family: 'Georgia', serif; /* Google fonts bhi laga sakte hain */
+            font-size: 2.5rem; /* rem = root font size (1rem = 16px) */
+            font-weight: 700; /* Boldness (100 se 900 tak) */
+            line-height: 1.3; /* Lines ke darmiyaan faasla */
+            color: #1a237e; /* Topic 3: Colors */
+            text-align: center; /* Center justify */
+        }
+
+        .typography-demo p {
+            font-size: 1.1rem;
+            font-weight: 400;
+            line-height: 1.8;
+            text-align: justify; /* Dono side align */
+            color: #333;
+        }
+
+        /* ---------- Topic 3: Links (Text-decoration) ---------- */
+        a {
+            color: #0d47a1;
+            text-decoration: none; /* Underline hatao */
+            font-weight: 600;
+            transition: color 0.3s ease; /* Smooth color change */
+        }
+        a:hover {
+            color: #ff5722;
+            text-decoration: underline; /* Hover par underline wapas laao */
+        }
+
+        /* ---------- Topic 3: Backgrounds ---------- */
+        .bg-demo {
+            background-image: linear-gradient(45deg, #ff9a9e 0%, #fecfef 99%);
+            /* Linear gradient background */
+            padding: 30px;
+            border-radius: 10px;
+            color: #333;
+        }
+
+        /* ---------- Topic 3: Transitions & Hover Effects (Button) ---------- */
+        .btn {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease; /* Sab properties smooth hongi */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        }
+        .btn:hover {
+            background: #ff5722;
+            transform: translateY(-3px); /* Thora ooper uth jaye */
+            box-shadow: 0 8px 15px rgba(255, 87, 34, 0.4);
+        }
+
+
+        /* ============================================== */
+        /* 🔥 LEVEL 4: POSITION + RESPONSIVE (Mobile)     */
+        /* ============================================== */
+
+        /* ---------- Topic 4: Position Fixed (Header) ---------- */
+        .sticky-header {
+            position: fixed; /* Screen ke saath chipak jata hai */
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: #1a237e;
+            color: white;
+            padding: 15px 20px;
+            z-index: 999; /* Topic 4: Z-index (Baaki sab ke ooper aaye) */
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            text-align: center;
+        }
+
+        /* ---------- Topic 4: Position Relative + Absolute ---------- */
+        .relative-box {
+            position: relative; /* Iske andar absolute wala iske hisaab se move karega */
+            background: #d1c4e9;
+            padding: 40px;
+            border-radius: 10px;
+            height: 150px;
+        }
+        .absolute-child {
+            position: absolute; /* Parent (relative-box) ke hisaab se */
+            bottom: 10px;
+            right: 20px;
+            background: #512da8;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 30px;
+        }
+
+        /* ---------- Topic 4: Position Sticky (Sidebar demo) ---------- */
+        .sticky-sidebar {
+            position: sticky;
+            top: 80px; /* 80px neeche jakar chipak jayega jab scroll karein */
+            background: #ffeb3b;
+            padding: 15px;
+            border-radius: 8px;
+            color: #333;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        /* ---------- Topic 4: Media Queries (Responsive - MOBILE FIRST) ---------- */
+        /* Default (Mobile) layout ke liye upar wala code hai.
+           Ab agar screen 768px se bari ho (Tablet/Laptop) toh yeh changes apply honge: */
+
+        @media (min-width: 768px) {
+            body {
+                padding: 80px 40px 30px 40px;
+                background-color: #e9ecef;
+            }
+            
+            /* Grid ko responsive karna: Agar screen bari ho toh 3 columns theek hain, 
+               lekin agar chhoti ho toh hum neeche media query mein change karenge.
+               Upar grid to 3 columns hai, lekin agar hum chahein ke mobile par 1 column ho: */
+        }
+
+        /* Mobile screens (max-width: 600px) ke liye alag layout */
+        @media (max-width: 600px) {
+            /* Grid ko 1 column mein badal do */
+            .grid-container {
+                grid-template-columns: 1fr; /* Sirf 1 column */
+            }
+            
+            /* Flexbox items ko stack kar do */
+            .flex-container {
+                flex-direction: column; /* Column mein aa jayein */
+                align-items: stretch; /* Poori width lein */
+            }
+
+            /* Font size chhota kar do */
+            .typography-demo h1 {
+                font-size: 1.8rem;
+            }
+
+            /* Body padding kam kar do */
+            body {
+                padding: 70px 10px 10px 10px;
+            }
+        }
+
     </style>
 </head>
 <body>
-<<<<<<< HEAD
 
     <!-- ========================================== -->
-    <!-- LEVEL 1: 🔵 BUNYADI (Har website mein)     -->
+    <!-- STICKY HEADER (Position Fixed + Z-index)   -->
     <!-- ========================================== -->
-
-    <div class="box">
-        <h1>1. Headings (h1 se h6 tak)</h1>
-        <h1>Yeh Heading 1 hai (Sirf ek baar use karein)</h1>
-        <h2>Yeh Heading 2 hai</h2>
-        <h3>Yeh Heading 3 hai</h3>
-        <h4>Yeh Heading 4 hai</h4>
-        <h5>Yeh Heading 5 hai</h5>
-        <h6>Yeh Heading 6 hai</h6>
-
-        <h2>2. Paragraphs aur Text Formatting</h2>
-        <!-- <p> = Paragraph, <br> = line break, <strong> = Bold (SEO wala), <em> = Italic -->
-        <p>
-            <strong>Strong</strong> text (bold aur important). 
-            <em>Emphasized</em> text (italic aur important). 
-            <u>Underline</u> bhi hota hai. <br> <!-- yeh line break hai -->
-            Yeh <mark>highlighted</mark> text hai. <hr> <!-- <hr> horizontal line deta hai -->
-            Aur yeh <small>chhota</small> text hai.
-        </p>
-
-        <h2>3. Lists (Ordered aur Unordered)</h2>
-        <ul> <!-- Unordered List (Bullets) -->
-            <li>Chai</li>
-            <li>Pani</li>
-            <li>Doodh</li>
-        </ul>
-        <ol> <!-- Ordered List (Numbers) -->
-            <li>Pehla kaam</li>
-            <li>Doosra kaam</li>
-            <li>Teesra kaam</li>
-        </ol>
-
-        <h2>4. Links (< a > tag) aur Images (< img > tag)</h2>
-        <!-- target="_blank" se nayi tab mein khulega -->
-        <a href="https://google.com" target="_blank">Google par jayein (Link)</a> <br><br>
-        
-        <!-- alt attribute Accessibility aur SEO ke liye BEHAD zaroori hai -->
-        <img src="https://via.placeholder.com/150" alt="Yeh sample image hai" width="150" height="150">
-    </div>
-
-    <!-- ========================================== -->
-    <!-- LEVEL 2: 🟡 MODERN (Semantic Layout)       -->
-    <!-- ========================================== -->
-
-    <!-- Header: Website ka top section (logo + nav) -->
-    <header class="box">
-        <h1>5. Semantic Layout (Header, Nav, Main, Section, Article, Aside, Footer)</h1>
-        <!-- Nav: Navigation menu ke liye -->
-        <nav>
-            <a href="#">Home</a>
-            <a href="#">About</a>
-            <a href="#">Services</a>
-            <a href="#">Contact</a>
-        </nav>
+    <header class="sticky-header">
+        <h3>📌 Yeh Header Fixed hai (Scroll karte hue bhi top par rahega)</h3>
     </header>
 
-    <!-- Main: Website ka central khana (Sab se important content yahan) -->
-    <main class="box">
-        <!-- Section: Kisi category ya group ka wrapper -->
-        <section>
-            <h2>Section (Category)</h2>
-            <p>Yeh section blog posts ki category ho sakti hai.</p>
-        </section>
-        
-        <!-- Article: Independent content (Blog post, news, product) -->
-        <article>
-            <h3>Article (Blog Post)</h3>
-            <p>Yeh ek mukammal article hai jo akela bhi meaningful hai.</p>
-        </article>
-        
-        <!-- Aside: Sidebar (Related links, ads, author info) -->
-        <aside>
-            <h4>Aside (Sidebar)</h4>
-            <p>Yahan ads ya related links aate hain.</p>
-        </aside>
-    </main>
+    <!-- ========================================== -->
+    <!-- LEVEL 1: BOX MODEL + DISPLAY DEMO          -->
+    <!-- ========================================== -->
 
-    <!-- Footer: Copyright, links, bottom section -->
-    <footer class="box">
-        <p>Footer - Copyright 2026 | All Rights Reserved</p>
+    <div class="box">
+        <h2>🔵 Level 1: Box Model (Content, Padding, Border, Margin)</h2>
+        <div class="box-model-demo">
+            <strong>Yeh Box Model Demo hai.</strong><br>
+            Iske andar Padding (20px) hai, Border (4px solid) hai, aur bahar Margin (15px) hai.
+        </div>
+    </div>
+
+    <div class="box">
+        <h2>🔵 Level 1: Display Property (Block vs Inline vs Inline-Block)</h2>
+        <div class="block-demo">1. Block Element (Poori width)</div>
+        <div class="block-demo">2. Block Element (Agla neeche aayega)</div>
+        
+        <span class="inline-demo">Inline (1)</span>
+        <span class="inline-demo">Inline (2)</span>
+        <span class="inline-demo">Inline (3) - Ek line mein</span>
+        <br><br>
+        
+        <div class="inline-block-demo">Inline-Block (width 150px)</div>
+        <div class="inline-block-demo">Inline-Block (width 150px)</div>
+        <div style="margin-top:10px; color:red;">(Notice: Inline-Block ek line mein aate hain lekin unki width set kar sakte hain)</div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- LEVEL 2: FLEXBOX + GRID LAYOUT            -->
+    <!-- ========================================== -->
+
+    <div class="box">
+        <h2>🟡 Level 2: Flexbox (1D - Row/Column)</h2>
+        <div class="flex-container">
+            <div class="flex-item">Flex Item 1</div>
+            <div class="flex-item">Flex Item 2</div>
+            <div class="flex-item">Flex Item 3</div>
+            <div class="flex-item">Flex Item 4</div>
+        </div>
+        <p style="margin-top:10px;">(Yeh row mein hain, agar screen chhoti ho toh wrap ho jayenge)</p>
+    </div>
+
+    <div class="box">
+        <h2>🟡 Level 2: CSS Grid (2D - Rows & Columns)</h2>
+        <div class="grid-container">
+            <div class="grid-item">Grid 1</div>
+            <div class="grid-item">Grid 2</div>
+            <div class="grid-item">Grid 3</div>
+            <div class="grid-item">Grid 4</div>
+            <div class="grid-item">Grid 5</div>
+            <div class="grid-item">Grid 6</div>
+        </div>
+        <p style="margin-top:10px;">(Mobile par 1 column ho jayega - Media Query dekhyein)</p>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- LEVEL 3: TYPOGRAPHY, COLORS, HOVER        -->
+    <!-- ========================================== -->
+
+    <div class="box typography-demo">
+        <h2>🟠 Level 3: Typography (Fonts, Sizes, Colors)</h2>
+        <h1>Yeh Heading hai (Georgia, 2.5rem, Center)</h1>
+        <p>
+            Yeh paragraph hai. Iska font size 1.1rem hai, line-height 1.8 hai (reading ke liye aasan),
+            aur text <strong>Justify</strong> hai. Neela rang (#333) hai.
+            <br><br>
+            <a href="#">Yeh ek Link hai (Underline nahi, hover par aayegi)</a>
+        </p>
+    </div>
+
+    <div class="box bg-demo">
+        <h2>🟠 Level 3: Background Gradient & Button</h2>
+        <p>Is box ka background Linear Gradient (pink shades) hai.</p>
+        <br>
+        <!-- Button with Transition & Hover -->
+        <button class="btn">Hover Karo Mujh Par!</button>
+        <p style="margin-top:10px; font-size:0.9rem;">(Hover karte hi color change, ooper uthta hai, aur shadow dark hoti hai)</p>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- LEVEL 4: POSITION (Relative/Absolute/Sticky) -->
+    <!-- ========================================== -->
+
+    <div class="box">
+        <h2>🔵 Level 4: Position (Relative + Absolute)</h2>
+        <div class="relative-box">
+            <p>Yeh <strong>Relative</strong> box hai (Parent).</p>
+            <div class="absolute-child">✅ Yeh Absolute Child hai (Bottom-Right par set)</div>
+        </div>
+    </div>
+
+    <div class="box">
+        <h2>🔵 Level 4: Position Sticky (Scroll karke dekhein)</h2>
+        <p>Neeche scroll karein toh yeh yellow box 80px neeche jakar chipak jayega (sticky).</p>
+        <div class="sticky-sidebar">
+            📍 Yeh Sticky hai! (Jab scroll karein ge, top:80px par chipak jayega)
+        </div>
+        <p style="height: 100px; background: #eee; padding: 20px;">(Aage extra space hai taake scroll kar sakein)...</p>
+        <p style="height: 100px; background: #ddd; padding: 20px;">Scroll karte rahein...</p>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- FOOTER                                      -->
+    <!-- ========================================== -->
+    <footer style="text-align: center; padding: 20px; color: #666; border-top: 1px solid #ccc;">
+        <p>© 2026 - HTML + CSS Complete Demo | <span style="color:red;">❤️</span> Practice karein!</p>
+        <p style="font-size:0.8rem;">(Mobile view ke liye browser ka width 600px se kam karke dekhein - Grid aur Flex change hoga)</p>
     </footer>
 
-    <!-- ========================================== -->
-    <!-- LEVEL 2: 🟡 FORMS (User Input)             -->
-    <!-- ========================================== -->
-
-    <div class="box">
-        <h2>6. Forms aur Inputs (User Interaction)</h2>
-        <form>
-            <!-- <label> Accessibility ke liye zaroori hai -->
-            <label>Text Input: <input type="text" placeholder="Apna naam likhein" required></label> <br><br>
-            
-            <label>Email: <input type="email" placeholder="email@example.com" required></label> <br><br>
-            
-            <label>Password: <input type="password" minlength="6" placeholder="6 chars min"></label> <br><br>
-            
-            <label>Number: <input type="number" min="1" max="10"></label> <br><br>
-            
-            <label>Dropdown (Select):
-                <select>
-                    <option>Pakistan</option>
-                    <option>India</option>
-                    <option>USA</option>
-                </select>
-            </label> <br><br>
-
-            <label>Message (Textarea):</label> <br>
-            <textarea rows="3" cols="30" placeholder="Type here..."></textarea> <br><br>
-
-            <!-- Button submit ke liye -->
-            <button type="submit">Submit Form</button>
-            <button type="reset">Reset</button>
-        </form>
-    </div>
-
-    <!-- ========================================== -->
-    <!-- LEVEL 2: 🟡 MEDIA ELEMENTS                 -->
-    <!-- ========================================== -->
-
-    <div class="box">
-        <h2>7. Media (Video, Audio, Iframe)</h2>
-        
-        <!-- controls attribute se play/pause show hoga -->
-        <video controls width="250">
-            <source src="sample.mp4" type="video/mp4">
-            Aapka browser video support nahi karta.
-        </video> <br><br>
-
-        <audio controls>
-            <source src="sample.mp3" type="audio/mpeg">
-            Aapka browser audio support nahi karta.
-        </audio> <br><br>
-
-        <!-- YouTube video embed karne ke liye iframe -->
-        <iframe width="300" height="200" src="https://www.youtube.com/embed/tgbNymZ7vqY" allowfullscreen></iframe>
-    </div>
-
-    <!-- ========================================== -->
-    <!-- LEVEL 3: 🔵 EXTRA (Tables, Block/Inline)   -->
-    <!-- ========================================== -->
-
-    <div class="box">
-        <h2>8. Tables (Data display ke liye, layout ke liye nahi)</h2>
-        <table>
-            <thead> <!-- Table Head (Column names) -->
-                <tr>
-                    <th>Student Name</th>
-                    <th>Class</th>
-                    <th>Marks</th>
-                </tr>
-            </thead>
-            <tbody> <!-- Table Body (Actual data) -->
-                <tr>
-                    <td>Ali Ahmed</td>
-                    <td>10th</td>
-                    <td>85%</td>
-                </tr>
-                <tr>
-                    <td>Sara Khan</td>
-                    <td>12th</td>
-                    <td>92%</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-
-    <div class="box">
-        <h2>9. Block vs Inline Elements (Samajhna behad zaroori hai)</h2>
-        <!-- Block element: Poori width le leta hai aur nayi line se start hota hai -->
-        <div class="block-demo">Yeh DIV hai (Block Element) - Poori width leta hai aur neeche line break deta hai.</div>
-        <div class="block-demo">Dusra DIV bhi nayi line se start hoga.</div>
-
-        <!-- Inline element: Sirf apni text ki had tak rehta hai, ek hi line mein aate hain -->
-        <span class="inline-demo">Yeh SPAN hai (Inline Element)</span> 
-        <span class="inline-demo">Dusra SPAN</span> 
-        <span>Yeh teeno ek hi line mein aayenge, kyunki yeh inline hain.</span>
-    </div>
-=======
-    <h1>HI EVERY 1</h1>
-    <h1>HI EVERY 2</h1>
-    <h1>HI EVERY 3</h1>
->>>>>>> 7b57fd3a948d645fa42a0aad35afecb5d542e9fd
 </body>
 </html>
